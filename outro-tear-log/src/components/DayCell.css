@@ -1,0 +1,39 @@
+.day-cell {
+  width: 7.5em;
+  height: 7.5em;
+  border: none;
+  border-radius: 10px;
+  background: #3d1a16;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+}
+
+.day-cell--empty-slot {
+  background: transparent;
+  cursor: default;
+}
+
+.day-cell__number {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 1.25rem;
+  color: #f5f5f5;
+}
+
+.day-cell--logged {
+  background: #401F1F;
+}
+
+.day-cell--logged .day-cell__number {
+  color: #f5f5f5;
+}
+
+.day-cell__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f5f5f5;
+}
