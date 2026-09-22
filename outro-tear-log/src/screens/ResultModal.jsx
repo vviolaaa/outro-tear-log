@@ -1,9 +1,30 @@
 import Modal from '../components/Modal';
 import './ResultModal.css';
 
+// Turns an option object (or the free-typed reason text) into display text,
+// folding in its category the same way the question screens do.
+function formatOption(option) {
+    if (!option) return null;
+    return option.category ? `${option.text} (${option.category})` : option.text;
+}
+
 export default function ResultModal({ entry, onSave, onDiscard }) {
-    const { moodImage, tags = [], note } = entry;
+    const { moodImage, tags = [], note, reason, duration, ateToday, coping } = entry;
     const hasNote = Boolean(note);
+
+    // Present in the sad flow only — the answers from the "why did you cry /
+    // how long has this been building / did you eat today / coping
+    // mechanism" screens. Anything not answered (e.g. happy flow skips all
+    // of these) is simply left out.
+    const surveyAnswers = [
+        reason && { label: 'why', value: formatOption(reason) },
+        duration && { label: 'how long', value: formatOption(duration) },
+        ateToday?.length > 0 && {
+            label: 'did you eat',
+            value: ateToday.map(formatOption).join(', '),
+        },
+        coping && { label: 'coping mechanism', value: formatOption(coping) },
+    ].filter(Boolean);
 
     return (
         <Modal>
@@ -30,6 +51,20 @@ export default function ResultModal({ entry, onSave, onDiscard }) {
                                         {tag}
                                     </span>
                                 ))}
+                            </div>
+                        )}
+
+                        {surveyAnswers.length > 0 && (
+                            <div className="result-survey">
+                                <h3 className="result-column-label">the play-by-play:</h3>
+                                <ul className="result-survey-list">
+                                    {surveyAnswers.map((answer) => (
+                                        <li key={answer.label} className="result-survey-item">
+                                            <span className="result-survey-q">{answer.label}:</span>{' '}
+                                            {answer.value}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         )}
                     </div>

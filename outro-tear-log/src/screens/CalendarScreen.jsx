@@ -4,7 +4,10 @@ import HappyTearsModal from './HappyTearsModal';
 import ComfortModal from './ComfortModal';
 import SeenItComingModal from './SeenItComingModal';
 import SadReasonModal from './SadReasonModal';
-import MoodPickerModal, { MOOD_IMAGES } from './MoodPickerModal';
+import DurationModal from './DurationModal';
+import AteTodayModal from './AteTodayModal';
+import CopingModal from './CopingModal';
+import MoodPickerModal, { HAPPY_MOOD_LAYOUT, SAD_MOOD_LAYOUT, MOOD_IMAGES } from './MoodPickerModal';
 import CelebrationModal, { HAPPY_TAGS, SAD_TAGS } from './CelebrationModal';
 import ResultModal from './ResultModal';
 import { getMonthGrid, MONTH_NAMES } from '../utils/calendar';
@@ -13,13 +16,18 @@ import './CalendarScreen.css';
 export default function CalendarScreen({ year, month, loggedDays, onSelectDay }) {
   const cells = getMonthGrid(year, month);
   const [activeDay, setActiveDay] = useState(null);
-  const [modalStep, setModalStep] = useState(null); // 'happyTears' | 'comfort' | 'seenItComing' | 'sadReason' | 'celebration' | 'sadCelebration' | 'moodPicker' | 'result' | null
+  // 'happyTears' | 'comfort' | 'seenItComing' | 'sadCelebration' |
+  // 'sadReason' | 'duration' | 'ateToday' | 'coping' | 'celebration' |
+  // 'moodPicker' | 'result' | null
+  const [modalStep, setModalStep] = useState(null);
   const [pendingEntry, setPendingEntry] = useState(null);
+  const [isSadFlow, setIsSadFlow] = useState(false);
 
   const closeFlow = () => {
     setModalStep(null);
     setActiveDay(null);
     setPendingEntry(null);
+    setIsSadFlow(false);
   };
 
   const handleDayClick = (day) => {
@@ -29,8 +37,10 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
 
   const handleHappyTearsAnswer = (wasHappy) => {
     if (wasHappy) {
+      setIsSadFlow(false);
       setModalStep('celebration');
     } else {
+      setIsSadFlow(true);
       setModalStep('comfort');
     }
   };
@@ -40,15 +50,29 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
     setModalStep('moodPicker');
   };
 
-  const handleSadReasonNext = (reasonCategory) => {
-    setPendingEntry((prev) => ({ ...prev, reasonCategory }));
-    setModalStep('sadCelebration');
-  };
-
   const handleSadCelebrationSave = (entryDetails) => {
     setPendingEntry((prev) => ({ ...prev, ...entryDetails }));
-    // sad-tears flow past this point isn't built yet — just close for now
-    closeFlow();
+    setModalStep('sadReason');
+  };
+
+  const handleSadReasonNext = (_reasonId, reason) => {
+    setPendingEntry((prev) => ({ ...prev, reason }));
+    setModalStep('duration');
+  };
+
+  const handleDurationNext = (_durationId, duration) => {
+    setPendingEntry((prev) => ({ ...prev, duration }));
+    setModalStep('ateToday');
+  };
+
+  const handleAteTodayNext = (_ateTodayIds, ateToday) => {
+    setPendingEntry((prev) => ({ ...prev, ateToday }));
+    setModalStep('coping');
+  };
+
+  const handleCopingNext = (_copingId, coping) => {
+    setPendingEntry((prev) => ({ ...prev, coping }));
+    setModalStep('moodPicker');
   };
 
   const handleMoodSelect = (moodId) => {
@@ -86,16 +110,7 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
         <ComfortModal onAnswer={() => setModalStep('seenItComing')} />
       )}
       {modalStep === 'seenItComing' && (
-        <SeenItComingModal onAnswer={() => setModalStep('sadReason')} />
-      )}
-      {modalStep === 'sadReason' && (
-        <SadReasonModal
-          onBack={() => setModalStep('seenItComing')}
-          onNext={handleSadReasonNext}
-        />
-      )}
-      {modalStep === 'celebration' && (
-        <CelebrationModal tags={HAPPY_TAGS} onSave={handleCelebrationSave} />
+        <SeenItComingModal onAnswer={() => setModalStep('sadCelebration')} />
       )}
       {modalStep === 'sadCelebration' && (
         <CelebrationModal
@@ -105,8 +120,38 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
           onSave={handleSadCelebrationSave}
         />
       )}
+      {modalStep === 'sadReason' && (
+        <SadReasonModal
+          onBack={() => setModalStep('sadCelebration')}
+          onNext={handleSadReasonNext}
+        />
+      )}
+      {modalStep === 'duration' && (
+        <DurationModal
+          onBack={() => setModalStep('sadReason')}
+          onNext={handleDurationNext}
+        />
+      )}
+      {modalStep === 'ateToday' && (
+        <AteTodayModal
+          onBack={() => setModalStep('duration')}
+          onNext={handleAteTodayNext}
+        />
+      )}
+      {modalStep === 'coping' && (
+        <CopingModal
+          onBack={() => setModalStep('ateToday')}
+          onNext={handleCopingNext}
+        />
+      )}
+      {modalStep === 'celebration' && (
+        <CelebrationModal tags={HAPPY_TAGS} onSave={handleCelebrationSave} />
+      )}
       {modalStep === 'moodPicker' && (
-        <MoodPickerModal onSelect={handleMoodSelect} />
+        <MoodPickerModal
+          layout={isSadFlow ? SAD_MOOD_LAYOUT : HAPPY_MOOD_LAYOUT}
+          onSelect={handleMoodSelect}
+        />
       )}
       {modalStep === 'result' && pendingEntry && (
         <ResultModal
