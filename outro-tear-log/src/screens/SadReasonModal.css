@@ -1,0 +1,117 @@
+.sad-reason-title {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 22px;
+  color: #2a1210;
+  max-width: 80%;
+}
+
+.sad-reason-divider {
+  height: 1px;
+  background: #d9d0cc;
+  margin: 14px 0 20px;
+}
+
+.sad-reason-box {
+  position: relative;
+  background: #e6e2e0;
+  border-radius: 10px;
+  padding: 18px 20px;
+  min-height: 190px;
+  margin-bottom: 22px;
+}
+
+.sad-reason-sticker-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.sad-reason-photo {
+  position: absolute;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
+}
+
+.sad-reason-question {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 13px;
+  color: #6f6a67;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.sad-reason-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 60%;
+  position: relative;
+  z-index: 1;
+}
+
+.sad-reason-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  padding: 5px 0 5px 16px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 13px;
+  color: #2a1210;
+  cursor: pointer;
+  position: relative;
+}
+
+.sad-reason-option::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+}
+
+.sad-reason-option--selected {
+  color: #a23a2f;
+}
+
+.sad-reason-option:hover {
+  color: #a23a2f;
+}
+
+.sad-reason-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.sad-reason-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 26px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.sad-reason-btn:hover {
+  opacity: 0.9;
+}
+
+.sad-reason-btn:active {
+  transform: scale(0.97);
+}
+
+.sad-reason-btn--back {
+  background: #e6dfdb;
+  color: #2a1210;
+}
+
+.sad-reason-btn--next {
+  background: #3d1a16;
+  color: #f5e9dc;
+}
+
+.sad-reason-btn--next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

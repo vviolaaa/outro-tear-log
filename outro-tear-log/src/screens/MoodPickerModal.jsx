@@ -51,6 +51,10 @@ const MOOD_LAYOUT = [
     { id: 'mood-17', image: mood17, label: 'mood-17', top: '60%', left: '77%', width: 220, height: 220, rotate: 0, z: 3 },
 ];
 
+export const MOOD_IMAGES = Object.fromEntries(
+  MOOD_LAYOUT.map((m) => [m.id, m.image])
+);
+
 export default function MoodPickerModal({ onSelect }) {
     const [selectedId, setSelectedId] = useState(null);
 

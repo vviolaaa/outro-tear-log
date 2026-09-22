@@ -1,0 +1,84 @@
+.modal-card--comfort {
+  padding: 80px 0 50px;
+  overflow: hidden;
+}
+
+.comfort-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.comfort-title {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 26px;
+  text-align: center;
+  color: #2a1210;
+  padding: 0 40px;
+  margin-bottom: 22px;
+}
+
+.comfort-lineup {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.comfort-photo {
+  position: absolute;
+  bottom: 0;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.18));
+}
+
+.comfort-divider {
+  height: 1px;
+  background: #e0d5d0;
+  margin: 0 40px 20px;
+}
+
+.comfort-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 40px;
+}
+
+.comfort-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 26px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.comfort-btn:hover {
+  opacity: 0.9;
+}
+
+.comfort-btn:active {
+  transform: scale(0.97);
+}
+
+.comfort-btn--thanks {
+  background: #e6dfdb;
+  color: #2a1210;
+}
+
+.comfort-btn--best {
+  background: #3d1a16;
+  color: #f5e9dc;
+}
+
+@media (max-width: 640px) {
+  .comfort-lineup {
+    padding: 0 12px;
+  }
+
+  .comfort-photo {
+    max-height: 180px;
+  }
+}

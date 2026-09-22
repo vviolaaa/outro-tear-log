@@ -1,5 +1,5 @@
 .result-modal {
-  padding: 32px 36px;
+  padding: 0 36px;
 }
 
 .result-title {
@@ -26,7 +26,7 @@
   font-family: 'Kumar One', sans-serif;
   font-size: 15px;
   color: #2a1210;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .result-column--mood {
@@ -34,6 +34,10 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: flex-start;
+  background: #f7f2ee;
+  border-radius: 14px;
+  padding: 16px 12px 10px;
 }
 
 .result-reason-box {
@@ -42,6 +46,15 @@
   padding: 14px;
   min-height: 150px;
   margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.result-reason-box--empty {
+  min-height: 64px;
+  background: transparent;
+  border: 1.5px dashed #cdc3be;
+  padding: 12px 14px;
 }
 
 .result-reason-text {
@@ -54,9 +67,10 @@
 .result-reason-placeholder {
   font-family: 'Kumar One', sans-serif;
   font-size: 13px;
-  color: #8a8280;
+  color: #a89e99;
   text-align: center;
-  margin-top: 60px;
+  width: 100%;
+  margin: 0;
 }
 
 .result-tags {
@@ -71,13 +85,13 @@
   font-family: 'Kumar One', sans-serif;
   font-size: 12px;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: 10px;
 }
 
 .result-sticker-wrap {
   position: relative;
   width: 150px;
-  height: 190px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,17 +111,22 @@
   pointer-events: none;
 }
 
-.result-star--1 { top: 4%;  left: 6%; }
-.result-star--2 { top: 12%; right: 2%; font-size: 20px; }
-.result-star--3 { top: 46%; left: -6%; }
-.result-star--4 { top: 52%; right: -4%; font-size: 22px; }
-.result-star--5 { bottom: 10%; right: 12%; font-size: 14px; }
+.result-star--1  { top: 0%;    left: 4%;   font-size: 16px; }
+.result-star--2  { top: 4%;    left: 36%;  font-size: 12px; }
+.result-star--3  { top: 2%;    right: 2%;  font-size: 22px; }
+.result-star--4  { top: 22%;   right: -6%; font-size: 14px; }
+.result-star--5  { top: 46%;   left: -8%;  font-size: 18px; }
+.result-star--6  { top: 50%;   right: -8%; font-size: 15px; }
+.result-star--7  { bottom: 22%; left: -4%; font-size: 13px; }
+.result-star--8  { bottom: 6%;  left: 20%; font-size: 20px; }
+.result-star--9  { bottom: 10%; right: 10%; font-size: 16px; }
+.result-star--10 { bottom: -2%; right: 36%; font-size: 12px; }
 
 .result-footer-note {
   font-family: 'Kumar One', sans-serif;
   font-size: 12px;
   color: #a08d88;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .result-actions {
@@ -123,14 +142,24 @@
   font-family: 'Kumar One', sans-serif;
   font-size: 15px;
   cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.result-btn:hover {
+  opacity: 0.9;
+}
+
+.result-btn:active {
+  transform: scale(0.97);
 }
 
 .result-btn--no {
-  background: #3d1a16;
-  color: #f5e9dc;
+  background: transparent;
+  color: #a08d88;
+  border: 1.5px solid #d9cfca;
 }
 
 .result-btn--save {
-  background: #e6dfdb;
-  color: #2a1210;
+  background: #3d1a16;
+  color: #f5e9dc;
 }

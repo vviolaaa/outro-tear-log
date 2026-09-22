@@ -3,13 +3,25 @@ import Modal from '../components/Modal';
 import TagChip from '../components/TagChip';
 import './CelebrationModal.css';
 
-const HAPPY_TAGS = [
+export const HAPPY_TAGS = [
   'graduation', 'in luv', 'euphoria', 'good team',
   'good music', 'you hot', 'smooth like butter',
   'life goes on', 'life is dynamite'
 ];
 
-export default function CelebrationModal({ onSave }) {
+export const SAD_TAGS = [
+  'fake love', 'in luv', 'dis-ease', 'lost', 'dark days',
+  'truth untold', 'ugh!', 'too sad to dance', 'no more dream',
+  'cold feet', 'sick & tired', 'am i wrong', 'danger',
+  'i need u', 'so much pain', 'hate you', 'somebody said no'
+];
+
+export default function CelebrationModal({
+  title = 'Yyaaaaygg! Happy tears are great!',
+  subtitle = 'Congratulations <3 !',
+  tags = HAPPY_TAGS,
+  onSave,
+}) {
   const [note, setNote] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
 
@@ -21,8 +33,8 @@ export default function CelebrationModal({ onSave }) {
 
   return (
     <Modal>
-      <h2 className="celebration-title">Yyaaaaygg! Happy tears are great!</h2>
-      <p className="celebration-subtitle">Congratulations &lt;3 !</p>
+      <h2 className="celebration-title">{title}</h2>
+      {subtitle && <p className="celebration-subtitle">{subtitle}</p>}
 
       <textarea
         className="celebration-note"
@@ -32,7 +44,7 @@ export default function CelebrationModal({ onSave }) {
       />
 
       <div className="celebration-tags">
-        {HAPPY_TAGS.map((tag) => (
+        {tags.map((tag) => (
           <TagChip
             key={tag}
             label={tag}
