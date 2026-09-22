@@ -1,0 +1,36 @@
+.happy-tears-question {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 22px;
+  color: #2a1210;
+}
+
+.happy-tears-divider {
+  height: 1px;
+  background: #d9d0cc;
+  margin: 14px 0 20px;
+}
+
+.happy-tears-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.happy-tears-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.happy-tears-btn--yes {
+  background: #e6dfdb;
+  color: #2a1210;
+}
+
+.happy-tears-btn--no {
+  background: #3d1a16;
+  color: #f5e9dc;
+}

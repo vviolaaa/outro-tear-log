@@ -1,0 +1,21 @@
+.mood-picker-title {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 2rem;
+  color: #2a1210;
+  text-align: center;
+  line-height: 1.5;
+  z-index: 10;
+  max-width: 15rem;
+}
+
+.mood-picker-collage {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+}

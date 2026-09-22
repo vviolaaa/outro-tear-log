@@ -1,0 +1,25 @@
+.mood-option {
+  position: absolute;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+  transition: transform 0.15s ease;
+}
+
+.mood-option__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.mood-option:hover {
+  transform: scale(1.06) rotate(var(--rotate, 0deg)) !important;
+}
+
+.mood-option--selected {
+  filter: drop-shadow(0 0 0 3px #e6b3a3) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+}

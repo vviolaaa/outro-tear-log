@@ -1,0 +1,24 @@
+.tag-chip {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: #f2a8a8;
+  color: #2a1210;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.tag-chip:hover {
+  background: #ee8f8f;
+}
+
+.tag-chip--selected {
+  background: #2a1210;
+  color: #f5e9dc;
+}
+
+.tag-chip:active {
+  transform: scale(0.96);
+}

@@ -1,0 +1,136 @@
+.result-modal {
+  padding: 32px 36px;
+}
+
+.result-title {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 26px;
+  color: #2a1210;
+  margin-bottom: 12px;
+}
+
+.result-divider {
+  height: 1px;
+  background: #e0d5d0;
+  margin-bottom: 24px;
+}
+
+.result-columns {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+
+.result-column-label {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 15px;
+  color: #2a1210;
+  margin-bottom: 10px;
+}
+
+.result-column--mood {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.result-reason-box {
+  background: #dcd6d3;
+  border-radius: 10px;
+  padding: 14px;
+  min-height: 150px;
+  margin-bottom: 14px;
+}
+
+.result-reason-text {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 13px;
+  color: #2a1210;
+  line-height: 1.5;
+}
+
+.result-reason-placeholder {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 13px;
+  color: #8a8280;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.result-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.result-tag {
+  background: #f2a8a8;
+  color: #2a1210;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.result-sticker-wrap {
+  position: relative;
+  width: 150px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-sticker {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
+}
+
+.result-star {
+  position: absolute;
+  color: #f5d800;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.result-star--1 { top: 4%;  left: 6%; }
+.result-star--2 { top: 12%; right: 2%; font-size: 20px; }
+.result-star--3 { top: 46%; left: -6%; }
+.result-star--4 { top: 52%; right: -4%; font-size: 22px; }
+.result-star--5 { bottom: 10%; right: 12%; font-size: 14px; }
+
+.result-footer-note {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 12px;
+  color: #a08d88;
+  margin-bottom: 20px;
+}
+
+.result-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.result-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 26px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.result-btn--no {
+  background: #3d1a16;
+  color: #f5e9dc;
+}
+
+.result-btn--save {
+  background: #e6dfdb;
+  color: #2a1210;
+}

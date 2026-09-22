@@ -1,17 +1,22 @@
+import { useState } from 'react';
 import DayCell from '../components/DayCell';
+import HappyTearsModal from './HappyTearsModal';
+import MoodPickerModal from './MoodPickerModal';
+import CelebrationModal from './CelebrationModal';
 import { getMonthGrid, MONTH_NAMES } from '../utils/calendar';
 import './CalendarScreen.css';
 
 export default function CalendarScreen({ year, month, loggedDays, onSelectDay }) {
   const cells = getMonthGrid(year, month);
   const [activeDay, setActiveDay] = useState(null);
-  const [modalStep, setModalStep] = useState(null);
+  const [modalStep, setModalStep] = useState(null); // 'happyTears' | 'celebration' | 'moodPicker' | null
+  const [pendingEntry, setPendingEntry] = useState(null);
 
   const handleDayClick = (day) => {
     setActiveDay(day);
     setModalStep('happyTears');
   };
- 
+
   const handleHappyTearsAnswer = (wasHappy) => {
     if (wasHappy) {
       setModalStep('celebration');
@@ -21,11 +26,17 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
       setActiveDay(null);
     }
   };
- 
+
   const handleCelebrationSave = (entryDetails) => {
-    onSelectDay?.(activeDay, entryDetails);
+    setPendingEntry(entryDetails);
+    setModalStep('moodPicker');
+  };
+
+  const handleMoodSelect = (moodId) => {
+    onSelectDay?.(activeDay, { ...pendingEntry, mood: moodId });
     setModalStep(null);
     setActiveDay(null);
+    setPendingEntry(null);
   };
 
   return (
@@ -36,7 +47,7 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
             key={i}
             day={day}
             hasEntry={day !== null && loggedDays.includes(day)}
-            onClick={onSelectDay}
+            onClick={handleDayClick}
           />
         ))}
       </div>
@@ -47,6 +58,9 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
       )}
       {modalStep === 'celebration' && (
         <CelebrationModal onSave={handleCelebrationSave} />
+      )}
+      {modalStep === 'moodPicker' && (
+        <MoodPickerModal onSelect={handleMoodSelect} />
       )}
     </div>
   );
