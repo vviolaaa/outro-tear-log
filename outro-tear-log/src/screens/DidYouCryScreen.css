@@ -9,6 +9,8 @@
   justify-content: center;
   padding: 24px;
   background: radial-gradient(circle at 50% 40%, #0D0D0D 30%, #2E1616 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .prompt-title {
@@ -18,12 +20,16 @@
   text-align: center;
   margin-bottom: 28px;
   letter-spacing: 0.5px;
+  animation: prompt-title-in 0.6s ease both;
 }
 
 .prompt-dot {
+  display: inline-block;
   color: #f5f5f5;
   font-size: 2rem;
   vertical-align: middle;
+  animation: prompt-dot-pulse 1.8s ease-in-out infinite;
+  animation-delay: 0.6s;
 }
 
 .prompt-card {
@@ -33,6 +39,10 @@
   width: 100%;
   max-width: 50em;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  animation: prompt-card-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.25s;
+  position: relative;
+  z-index: 2;
 }
 
 .cry-screen-butterfly {
@@ -42,15 +52,78 @@
   user-select: none;
   line-height: 1;
   opacity: 0.8;
+  animation-name: cry-screen-butterfly-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
-.cry-screen-butterfly--1 { top: 8%; left: 8%; font-size: 2.8rem; transform: rotate(-18deg); }
-.cry-screen-butterfly--2 { top: 18%; left: 25%; font-size: 1.7rem; transform: rotate(12deg); }
-.cry-screen-butterfly--3 { top: 10%; right: 10%; font-size: 3.5rem; transform: rotate(20deg); }
-.cry-screen-butterfly--4 { top: 34%; right: 6%; font-size: 2rem; transform: rotate(-15deg); }
-.cry-screen-butterfly--5 { top: 42%; left: 5%; font-size: 3.8rem; transform: rotate(25deg); }
-.cry-screen-butterfly--6 { bottom: 20%; left: 14%; font-size: 1.5rem; transform: rotate(-30deg); }
-.cry-screen-butterfly--7 { bottom: 25%; right: 15%; font-size: 3rem; transform: rotate(18deg); }
-.cry-screen-butterfly--8 { bottom: 7%; left: 7%; font-size: 2.2rem; transform: rotate(-10deg); }
-.cry-screen-butterfly--9 { bottom: 8%; right: 32%; font-size: 1.8rem; transform: rotate(35deg); }
-.cry-screen-butterfly--10 { top: 25%; right: 30%; font-size: 1.3rem; transform: rotate(-25deg); }
+.cry-screen-butterfly--1 { top: 8%; left: 8%; font-size: 2.8rem; --rot: -18deg; animation-duration: 7.2s; animation-delay: 0s; }
+.cry-screen-butterfly--2 { top: 18%; left: 25%; font-size: 1.7rem; --rot: 12deg; animation-duration: 6.4s; animation-delay: 0.8s; }
+.cry-screen-butterfly--3 { top: 10%; right: 10%; font-size: 3.5rem; --rot: 20deg; animation-duration: 8.5s; animation-delay: 1.6s; }
+.cry-screen-butterfly--4 { top: 34%; right: 6%; font-size: 2rem; --rot: -15deg; animation-duration: 7s; animation-delay: 0.4s; }
+.cry-screen-butterfly--5 { top: 42%; left: 5%; font-size: 3.8rem; --rot: 25deg; animation-duration: 9.2s; animation-delay: 2.2s; }
+.cry-screen-butterfly--6 { bottom: 20%; left: 14%; font-size: 1.5rem; --rot: -30deg; animation-duration: 6.8s; animation-delay: 1.2s; }
+.cry-screen-butterfly--7 { bottom: 25%; right: 15%; font-size: 3rem; --rot: 18deg; animation-duration: 8s; animation-delay: 2.8s; }
+.cry-screen-butterfly--8 { bottom: 7%; left: 7%; font-size: 2.2rem; --rot: -10deg; animation-duration: 7.6s; animation-delay: 0.6s; }
+.cry-screen-butterfly--9 { bottom: 8%; right: 32%; font-size: 1.8rem; --rot: 35deg; animation-duration: 6.2s; animation-delay: 1.8s; }
+.cry-screen-butterfly--10 { top: 25%; right: 30%; font-size: 1.3rem; --rot: -25deg; animation-duration: 8.8s; animation-delay: 2.4s; }
+
+@keyframes prompt-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes prompt-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
+}
+
+@keyframes prompt-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cry-screen-butterfly-drift {
+  0% {
+    transform: rotate(var(--rot, 0deg)) translate(0, 0);
+  }
+  25% {
+    transform: rotate(var(--rot, 0deg)) translate(10px, -14px);
+  }
+  50% {
+    transform: rotate(var(--rot, 0deg)) translate(-4px, -24px);
+  }
+  75% {
+    transform: rotate(var(--rot, 0deg)) translate(-12px, -8px);
+  }
+  100% {
+    transform: rotate(var(--rot, 0deg)) translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prompt-title,
+  .prompt-dot,
+  .prompt-card,
+  .cry-screen-butterfly {
+    animation: none;
+  }
+}

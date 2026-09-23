@@ -3,7 +3,7 @@ import QuestionModal from '../components/QuestionModal';
 import rmBlack from '../assets/images/rm-curious.png';
 
 const REASON_LAYOUT = [
-  { id: 'sticker', image: rmBlack, label: 'sticker', top: '5%', left: '70%', width: 180, height: 220, rotate: 0, z: 2 },
+  { id: 'sticker', image: rmBlack, label: 'sticker', top: '4%', left: '70%', width: 180, height: 220, rotate: 0, z: 2 },
 ];
 
 const REASON_OPTIONS = [

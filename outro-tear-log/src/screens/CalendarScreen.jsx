@@ -122,6 +122,7 @@ export default function CalendarScreen({ year, month, loggedDays, entries = {}, 
                     <DayCell
                         key={i}
                         day={day}
+                        index={i}
                         hasEntry={day !== null && loggedDays.includes(day)}
                         onClick={handleDayClick}
                     />

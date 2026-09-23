@@ -1,6 +1,7 @@
 .day-cell {
-  width: 6.5rem;
-  height: 6.5rem;
+  position: relative;
+  width: 7rem;
+  height: 7rem;
   border: none;
   border-radius: 10px;
   background: #3d1a16;
@@ -10,6 +11,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.25em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .day-cell--empty-slot {
@@ -31,9 +33,77 @@
   color: #f5f5f5;
 }
 
-.day-cell__dot {
-  width: 6px;
-  height: 6px;
+/* Notification-style badge for a logged day — sits on the corner instead
+   of a plain dot, with a teardrop so it reads as "you cried here" at a
+   glance. Border matches the logged cell's own background so it looks cut
+   into the corner rather than pasted on top. */
+.day-cell__badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #f5f5f5;
+  background: #a23a2f;
+  border: 3px solid #401F1F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  animation: day-cell-badge-pulse 2.4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.day-cell:not(.day-cell--empty-slot):hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
+}
+
+.day-cell--logged:hover {
+  box-shadow: 0 12px 20px rgba(162, 58, 47, 0.4);
+}
+
+.day-cell:not(.day-cell--empty-slot):active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+@keyframes day-cell-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes day-cell-badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.day-cell:not(.day-cell--empty-slot) {
+  animation: day-cell-pop-in 0.35s ease backwards;
+  animation-delay: var(--cell-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .day-cell:not(.day-cell--empty-slot) {
+    animation: none;
+  }
+
+  .day-cell__badge {
+    animation: none;
+  }
+
+  .day-cell:not(.day-cell--empty-slot):hover {
+    transform: none;
+  }
 }

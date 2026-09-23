@@ -3,7 +3,7 @@ import QuestionModal from '../components/QuestionModal';
 import lifeGoesOnBts from '../assets/images/v-sing.png';
 
 const COPING_LAYOUT = [
-  { id: 'sticker', image: lifeGoesOnBts, label: 'sticker', top: '9%', left: '57%', width: 250, height: 290, rotate: 0, z: 2 },
+  { id: 'sticker', image: lifeGoesOnBts, label: 'sticker', top: '-10%', left: '57%', width: 250, height: 350, rotate: 0, z: 2 },
 ];
 
 const COPING_OPTIONS = [

@@ -3,7 +3,7 @@ import QuestionModal from '../components/QuestionModal';
 import rmTShirt from '../assets/images/jk-surprised.png';
 
 const DURATION_LAYOUT = [
-  { id: 'sticker', image: rmTShirt, label: 'sticker', top: '5%', left: '80%', width: 150, height: 180, rotate: 0, z: 2 },
+  { id: 'sticker', image: rmTShirt, label: 'sticker', top: '-32%', left: '65%', width: 250, height: 250, rotate: 0, z: 2 },
 ];
 
 const DURATION_OPTIONS = [
