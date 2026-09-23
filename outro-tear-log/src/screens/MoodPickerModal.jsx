@@ -118,6 +118,7 @@ export default function MoodPickerModal({
     layout = HAPPY_MOOD_LAYOUT,
     title = 'now choose the one that matches your mood',
     onSelect,
+    onClose,
 }) {
     const [selectedId, setSelectedId] = useState(null);
 
@@ -127,7 +128,7 @@ export default function MoodPickerModal({
     };
 
     return (
-        <Modal type="collage">
+        <Modal type="collage" onClose={onClose}>
             <div className="mood-picker-collage">
                 <h2 className="mood-picker-title">
                     {title}

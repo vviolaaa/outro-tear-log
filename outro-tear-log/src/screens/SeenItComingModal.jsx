@@ -11,9 +11,9 @@ const SEEN_IT_LAYOUT = [
     { id: 'reaction', image: jiminCurious, label: 'reaction', top: '11%', left: '65%', width: 220, height: 260, rotate: 0, z: 2 },
 ];
 
-export default function SeenItComingModal({ onAnswer }) {
+export default function SeenItComingModal({ onAnswer, onClose }) {
     return (
-        <Modal type="seenItComing">
+        <Modal type="seenItComing" onClose={onClose}>
             <div className="seen-it-modal">
                 <div className="seen-it-sticker-wrap">
                     {SEEN_IT_LAYOUT.map((item) => (

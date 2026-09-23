@@ -27,7 +27,7 @@ export default function ResultModal({ entry, onSave, onDiscard }) {
     ].filter(Boolean);
 
     return (
-        <Modal>
+        <Modal onClose={onDiscard}>
             <div className="result-modal">
                 <h2 className="result-title">killin' it girl</h2>
                 <div className="result-divider" />

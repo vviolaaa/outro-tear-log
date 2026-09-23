@@ -14,7 +14,7 @@ const DURATION_OPTIONS = [
   { id: 'all-my-life', text: 'For all my life' },
 ];
 
-export default function DurationModal({ onBack, onNext }) {
+export default function DurationModal({ onBack, onNext, onClose }) {
   return (
     <QuestionModal
       title="so I'm fine, I'm fine, I'm fine"
@@ -24,6 +24,7 @@ export default function DurationModal({ onBack, onNext }) {
       answerType="slider"
       onBack={onBack}
       onNext={onNext}
+      onClose={onClose}
     />
   );
 }

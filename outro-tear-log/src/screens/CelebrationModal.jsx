@@ -21,6 +21,7 @@ export default function CelebrationModal({
   subtitle = 'Congratulations <3 !',
   tags = HAPPY_TAGS,
   onSave,
+  onClose,
 }) {
   const [note, setNote] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
@@ -32,7 +33,7 @@ export default function CelebrationModal({
   };
 
   return (
-    <Modal>
+    <Modal onClose={onClose}>
       <h2 className="celebration-title">{title}</h2>
       {subtitle && <p className="celebration-subtitle">{subtitle}</p>}
 

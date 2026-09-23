@@ -39,6 +39,7 @@ export default function QuestionModal({
   initialValue = null,
   onBack,
   onNext,
+  onClose,
 }) {
   const isMulti = answerType === 'checkbox';
   const [value, setValue] = useState(initialValue ?? (isMulti ? [] : null));

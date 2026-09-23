@@ -3,7 +3,7 @@ import QuestionModal from '../components/QuestionModal';
 import jinEatsCake from '../assets/images/jin-wing.png';
 
 const ATE_TODAY_LAYOUT = [
-  { id: 'sticker', image: jinEatsCake, label: 'sticker', top: '14%', left: '63%', width: 250, height: 250, rotate: 0, z: 2 },
+  { id: 'sticker', image: jinEatsCake, label: 'sticker', top: '14%', left: '63%', width: 270, height: 250, rotate: 0, z: 2 },
 ];
 
 const ATE_TODAY_OPTIONS = [
@@ -14,7 +14,7 @@ const ATE_TODAY_OPTIONS = [
   { id: 'storyline', text: "You can't just cry and skip meals. What kind storyline is this?" },
 ];
 
-export default function AteTodayModal({ onBack, onNext }) {
+export default function AteTodayModal({ onBack, onNext, onClose }) {
   return (
     <QuestionModal
       title="life goes on and on and on and on"
@@ -24,6 +24,7 @@ export default function AteTodayModal({ onBack, onNext }) {
       answerType="checkbox"
       onBack={onBack}
       onNext={onNext}
+      onClose={onClose}
     />
   );
 }

@@ -104,13 +104,13 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
       <h2 className="calendar-month-label">{MONTH_NAMES[month]}</h2>
 
       {modalStep === 'happyTears' && (
-        <HappyTearsModal onAnswer={handleHappyTearsAnswer} />
+        <HappyTearsModal onAnswer={handleHappyTearsAnswer} onClose={closeFlow} />
       )}
       {modalStep === 'comfort' && (
-        <ComfortModal onAnswer={() => setModalStep('seenItComing')} />
+        <ComfortModal onAnswer={() => setModalStep('seenItComing')} onClose={closeFlow} />
       )}
       {modalStep === 'seenItComing' && (
-        <SeenItComingModal onAnswer={() => setModalStep('sadCelebration')} />
+        <SeenItComingModal onAnswer={() => setModalStep('sadCelebration')} onClose={closeFlow} />
       )}
       {modalStep === 'sadCelebration' && (
         <CelebrationModal
@@ -118,39 +118,45 @@ export default function CalendarScreen({ year, month, loggedDays, onSelectDay })
           subtitle=""
           tags={SAD_TAGS}
           onSave={handleSadCelebrationSave}
+          onClose={closeFlow}
         />
       )}
       {modalStep === 'sadReason' && (
         <SadReasonModal
           onBack={() => setModalStep('sadCelebration')}
           onNext={handleSadReasonNext}
+          onClose={closeFlow}
         />
       )}
       {modalStep === 'duration' && (
         <DurationModal
           onBack={() => setModalStep('sadReason')}
           onNext={handleDurationNext}
+          onClose={closeFlow}
         />
       )}
       {modalStep === 'ateToday' && (
         <AteTodayModal
           onBack={() => setModalStep('duration')}
           onNext={handleAteTodayNext}
+          onClose={closeFlow}
         />
       )}
       {modalStep === 'coping' && (
         <CopingModal
           onBack={() => setModalStep('ateToday')}
           onNext={handleCopingNext}
+          onClose={closeFlow}
         />
       )}
       {modalStep === 'celebration' && (
-        <CelebrationModal tags={HAPPY_TAGS} onSave={handleCelebrationSave} />
+        <CelebrationModal tags={HAPPY_TAGS} onSave={handleCelebrationSave} onClose={closeFlow} />
       )}
       {modalStep === 'moodPicker' && (
         <MoodPickerModal
           layout={isSadFlow ? SAD_MOOD_LAYOUT : HAPPY_MOOD_LAYOUT}
           onSelect={handleMoodSelect}
+          onClose={closeFlow}
         />
       )}
       {modalStep === 'result' && pendingEntry && (

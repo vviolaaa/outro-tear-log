@@ -22,9 +22,9 @@ const COMFORT_LAYOUT = [
   { id: 'jk', image: jk, label: 'jk', top: '17%', left: '26%', width: 200, height: 270, rotate: 0, z: 3 },
 ];
 
-export default function ComfortModal({ onAnswer }) {
+export default function ComfortModal({ onAnswer, onClose }) {
   return (
-    <Modal type="comfort">
+    <Modal type="comfort" onClose={onClose}>
       <div className="comfort-modal">
         <h2 className="comfort-title">to make you feel a little better</h2>
 

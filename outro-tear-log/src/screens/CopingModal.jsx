@@ -3,7 +3,7 @@ import QuestionModal from '../components/QuestionModal';
 import lifeGoesOnBts from '../assets/images/v-sing.png';
 
 const COPING_LAYOUT = [
-  { id: 'sticker', image: lifeGoesOnBts, label: 'sticker', top: '6%', left: '58%', width: 250, height: 300, rotate: 0, z: 2 },
+  { id: 'sticker', image: lifeGoesOnBts, label: 'sticker', top: '9%', left: '57%', width: 250, height: 290, rotate: 0, z: 2 },
 ];
 
 const COPING_OPTIONS = [
@@ -16,7 +16,7 @@ const COPING_OPTIONS = [
   { id: 'live-now', text: 'I wanna live right now' },
 ];
 
-export default function CopingModal({ onBack, onNext }) {
+export default function CopingModal({ onBack, onNext, onClose }) {
   return (
     <QuestionModal
       title="it's time to make it right i guess"
@@ -26,6 +26,7 @@ export default function CopingModal({ onBack, onNext }) {
       answerType="radio"
       onBack={onBack}
       onNext={onNext}
+      onClose={onClose}
     />
   );
 }

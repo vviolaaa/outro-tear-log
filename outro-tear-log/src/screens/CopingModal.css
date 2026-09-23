@@ -1,0 +1,67 @@
+.coping-modal {
+  text-align: center;
+}
+
+.coping-title {
+  font-family: 'Kumar One', sans-serif;
+  font-size: 20px;
+  color: #2a1210;
+  margin-bottom: 12px;
+}
+
+.coping-divider {
+  height: 1px;
+  background: #e0d5d0;
+  margin-bottom: 24px;
+}
+
+.coping-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.coping-option {
+  border: 1.5px solid #d9cfca;
+  background: transparent;
+  color: #2a1210;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.coping-option--selected {
+  background: #f2a8a8;
+  border-color: #f2a8a8;
+  color: #2a1210;
+}
+
+.coping-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.coping-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.coping-btn--back {
+  background: transparent;
+  color: #a08d88;
+  border: 1.5px solid #d9cfca;
+}
+
+.coping-btn--next {
+  background: #3d1a16;
+  color: #f5e9dc;
+}

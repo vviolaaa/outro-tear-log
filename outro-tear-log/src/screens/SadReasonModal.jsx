@@ -3,7 +3,7 @@ import QuestionModal from '../components/QuestionModal';
 import rmBlack from '../assets/images/rm-curious.png';
 
 const REASON_LAYOUT = [
-  { id: 'sticker', image: rmBlack, label: 'sticker', top: '0%', left: '70%', width: 180, height: 230, rotate: 0, z: 2 },
+  { id: 'sticker', image: rmBlack, label: 'sticker', top: '5%', left: '70%', width: 180, height: 220, rotate: 0, z: 2 },
 ];
 
 const REASON_OPTIONS = [
@@ -14,7 +14,7 @@ const REASON_OPTIONS = [
   { id: 'black-swan', text: 'Black Swan has entered the chat', category: 'no idea' },
 ];
 
-export default function SadReasonModal({ onBack, onNext }) {
+export default function SadReasonModal({ onBack, onNext, onClose }) {
   return (
     <QuestionModal
       title="let`s talk the talk and walk the walk i guess"
@@ -24,6 +24,7 @@ export default function SadReasonModal({ onBack, onNext }) {
       answerType="list"
       onBack={onBack}
       onNext={onNext}
+      onClose={onClose}
     />
   );
 }
