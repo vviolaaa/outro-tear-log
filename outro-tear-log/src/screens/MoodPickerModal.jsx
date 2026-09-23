@@ -110,6 +110,10 @@ export const MOOD_IMAGES = Object.fromEntries(
     ])
 );
 
+export function getMoodVariant(moodId) {
+    return moodId?.startsWith('sad-mood-') ? 'sad' : 'happy';
+}
+
 // ============================================================
 // MODAL
 // ============================================================

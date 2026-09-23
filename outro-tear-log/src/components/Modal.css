@@ -29,9 +29,11 @@
   border-radius: 50%;
   background: rgba(42, 18, 16, 0.06);
   color: #2a1210;
-  font-family: 'Kumar One', sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 20px;
-  line-height: 1;
+  line-height: 32px;
+  text-align: center;
+  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;

@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import Modal from '../components/Modal';
+import { HAPPY_RESULT_QUOTES, SAD_RESULT_QUOTES, pickRandomQuote } from '../utils/quotes';
 import './ResultModal.css';
 
 // Turns an option object (or the free-typed reason text) into display text,
@@ -8,9 +10,23 @@ function formatOption(option) {
     return option.category ? `${option.text} (${option.category})` : option.text;
 }
 
-export default function ResultModal({ entry, onSave, onDiscard }) {
+// One playful little icon per survey question, shown on its sticky note.
+const SURVEY_ICONS = {
+    why: '💭',
+    'how long': '⏳',
+    'did you eat': '🍜',
+    'coping mechanism': '🎧',
+};
+
+export default function ResultModal({ entry, onSave, onDiscard, mode = 'save', variant = 'happy' }) {
+    const isView = mode === 'view';
     const { moodImage, tags = [], note, reason, duration, ateToday, coping } = entry;
     const hasNote = Boolean(note);
+
+    const footerQuote = useMemo(
+        () => pickRandomQuote(variant === 'sad' ? SAD_RESULT_QUOTES : HAPPY_RESULT_QUOTES),
+        [variant]
+    );
 
     // Present in the sad flow only — the answers from the "why did you cry /
     // how long has this been building / did you eat today / coping
@@ -33,7 +49,7 @@ export default function ResultModal({ entry, onSave, onDiscard }) {
                 <div className="result-divider" />
 
                 <div className="result-columns">
-                    <div className="result-column">
+                    <div className="result-column result-column--reason">
                         <h3 className="result-column-label">cried because:</h3>
                         <div
                             className={`result-reason-box${hasNote ? '' : ' result-reason-box--empty'}`}
@@ -54,17 +70,22 @@ export default function ResultModal({ entry, onSave, onDiscard }) {
                             </div>
                         )}
 
-                        {surveyAnswers.length > 0 && (
+                                                {surveyAnswers.length > 0 && (
                             <div className="result-survey">
                                 <h3 className="result-column-label">the play-by-play:</h3>
-                                <ul className="result-survey-list">
+                                <div className="result-survey-cards">
                                     {surveyAnswers.map((answer) => (
-                                        <li key={answer.label} className="result-survey-item">
-                                            <span className="result-survey-q">{answer.label}:</span>{' '}
-                                            {answer.value}
-                                        </li>
+                                        <div key={answer.label} className="result-survey-card">
+                                            <span className="result-survey-card-label">
+                                                <span className="result-survey-emoji" aria-hidden="true">
+                                                    {SURVEY_ICONS[answer.label] || '✧'}
+                                                </span>
+                                                {answer.label}
+                                            </span>
+                                            <p className="result-survey-card-answer">{answer.value}</p>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -90,15 +111,17 @@ export default function ResultModal({ entry, onSave, onDiscard }) {
                 </div>
 
                 <p className="result-footer-note">
-                    now put your phone down and get all the fun!
+                    {footerQuote}
                 </p>
 
                 <div className="result-actions">
-                    <button className="result-btn result-btn--save" onClick={onSave}>
-                        save
-                    </button>
+                    {!isView && (
+                        <button className="result-btn result-btn--save" onClick={onSave}>
+                            save
+                        </button>
+                    )}
                     <button className="result-btn result-btn--no" onClick={onDiscard}>
-                        no
+                        {isView ? 'close' : 'no'}
                     </button>
                 </div>
             </div>

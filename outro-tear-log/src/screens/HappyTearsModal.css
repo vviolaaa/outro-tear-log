@@ -34,3 +34,38 @@
   background: #3d1a16;
   color: #f5e9dc;
 }
+
+.happy-tears-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: -4px;
+  margin-bottom: 20px;
+  color: #8f5b5b;
+  font-size: 17px;
+  opacity: 0.7;
+}
+
+.happy-tears-decoration span:nth-child(1) {
+  font-size: 14px;
+  transform: rotate(-12deg);
+}
+
+.happy-tears-decoration span:nth-child(2) {
+  font-size: 18px;
+  transform: rotate(8deg);
+}
+
+.happy-tears-decoration span:nth-child(3) {
+  font-size: 18px;
+  transform: rotate(-5deg);
+}
+
+.happy-tears-note {
+  margin-left: 4px;
+  font-family: 'Kumar One', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.3px;
+  color: #6e4a45;
+}

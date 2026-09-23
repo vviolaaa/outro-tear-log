@@ -6,7 +6,7 @@ import './CelebrationModal.css';
 export const HAPPY_TAGS = [
   'graduation', 'in luv', 'euphoria', 'good team',
   'good music', 'you hot', 'smooth like butter',
-  'life goes on', 'life is dynamite'
+  'life goes on', 'life is dynamite', 'some beat cha-ching like money'
 ];
 
 export const SAD_TAGS = [

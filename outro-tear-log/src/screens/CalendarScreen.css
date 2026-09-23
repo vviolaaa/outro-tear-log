@@ -1,26 +1,51 @@
 .calendar-screen {
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+  min-height: 100%;
+  flex: 1;
   background: #f2f0ee;
-  padding: 40px 32px;
+  padding: 40px 32px 0;
   display: flex;
   flex-direction: column;
 }
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 120px);
-  gap: 12px;
+  grid-template-columns: repeat(7, 7rem);
+  gap: 8px;
   justify-content: center;
 }
 
 .calendar-month-label {
   align-self: flex-end;
-  margin-top: 10px;
+  margin-top: 0;
+  padding: 0;
   font-family: 'Kumar One', serif;
   font-weight: 800;
   font-size: 3em;
   color: #2a1210;
   letter-spacing: 2px;
 }
+
+.calendar-flower {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  color: #8f5b5b;
+  opacity: 0.28;
+}
+
+.calendar-flower--1 { top: 5%; left: 5%; font-size: 4rem; transform: rotate(-18deg); }
+.calendar-flower--2 { top: 13%; left: 21%; font-size: 2rem; transform: rotate(25deg); opacity: 0.18; }
+.calendar-flower--3 { top: 4%; right: 8%; font-size: 5rem; transform: rotate(12deg); opacity: 0.22; }
+.calendar-flower--4 { top: 22%; right: 3%; font-size: 2.5rem; transform: rotate(-30deg); opacity: 0.3; }
+.calendar-flower--5 { top: 43%; left: 3%; font-size: 3.5rem; transform: rotate(15deg); opacity: 0.2; }
+.calendar-flower--6 { top: 38%; right: 8%; font-size: 5.5rem; transform: rotate(-12deg); opacity: 0.16; }
+.calendar-flower--7 { bottom: 22%; left: 9%; font-size: 2.2rem; transform: rotate(35deg); opacity: 0.25; }
+.calendar-flower--8 { bottom: 14%; right: 12%; font-size: 4rem; transform: rotate(-20deg); opacity: 0.2; }
+.calendar-flower--9 { bottom: 5%; left: 4%; font-size: 5rem; transform: rotate(10deg); opacity: 0.17; }
+.calendar-flower--10 { bottom: 8%; left: 28%; font-size: 2.5rem; transform: rotate(-35deg); opacity: 0.25; }
+.calendar-flower--11 { bottom: 6%; right: 5%; font-size: 3.5rem; transform: rotate(22deg); opacity: 0.22; }
+.calendar-flower--12 { top: 30%; right: 27%; font-size: 1.8rem; transform: rotate(-15deg); opacity: 0.3; }
